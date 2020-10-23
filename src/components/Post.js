@@ -8,19 +8,19 @@ import {
   Divider,
   Typography,
   Link,
+  Paper,
 } from '@material-ui/core';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 
-import RecipePopup from './RecipePopup';
+import ViewRecipePopup from './ViewRecipe';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    // background: 'red',
     border: '1px solid lightgrey',
+    borderRadius: 10,
     margin: '1rem 0',
   },
   headerWrapper: {
-    // background: 'blue',
     padding: '0.5rem 0',
   },
   avatar: {
@@ -53,7 +53,7 @@ const Post = () => {
   };
 
   return (
-    <Box className={classes.root}>
+    <Paper className={classes.root} elevation={2}>
       <Box display="flex" alignItems="center" className={classes.headerWrapper}>
         <Avatar className={classes.avatar}>OF</Avatar>
         <Box>
@@ -79,7 +79,7 @@ const Post = () => {
         >
           Recipe Instructions
         </Button>
-        <RecipePopup open={popupOpen} handleClose={handleClose} />
+        <ViewRecipePopup open={popupOpen} handleClose={handleClose} />
         <Divider />
         <div style={{ margin: '0.5rem 0' }}>
           <list style={{ listStyle: 'none' }}>
@@ -94,7 +94,7 @@ const Post = () => {
         </div>
         <h5>Oct 21, 2020</h5>
       </Box>
-    </Box>
+    </Paper>
   );
 };
 

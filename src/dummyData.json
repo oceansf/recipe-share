@@ -1,0 +1,43 @@
+{
+  "orders": [
+    {
+      "id": "1",
+      "title": "Peel-a-Pound Stew",
+      "author": "ocean_fuaga",
+      "likes": 100,
+      "bio": "This is a recipe my grandma showed me..",
+      "ingredients": [
+        "2 Mushrooms", "3 Apples", "6 Eggs"
+      ],
+      "instructions": [
+        "Heat pot", "Fill pot with sauce", "Let it sit for an hour"
+      ]
+    },
+    {
+      "id": "2",
+      "title": "Chicken Soup",
+      "author": "JoeSmith74",
+      "likes": 40,
+      "bio": "Mom's favorite..",
+      "ingredients": [
+        "2 Chickens", "3 Lemons", "1 Tbsp of Salt"
+      ],
+      "instructions": [
+        "Heat pan", "Do that", "Finish"
+      ]
+    },
+    {
+      "id": "3",
+      "title": "Japanese Steak",
+      "author": "Hashirama74",
+      "likes": 232,
+      "bio": "The best recipe ever.",
+      "ingredients": [
+        "2 grapes", "1 stick of butter", "6oz of olive oil"
+      ],
+      "instructions": [
+        "Do this", "Do that", "then do this"
+      ]
+    }    
+  ]
+}

@@ -10,6 +10,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 
 import SignIn from './SignIn';
 import Feed from './Feed';
+import Profile from './Profile';
 
 const theme = createMuiTheme({
   palette: {
@@ -28,6 +29,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+// TODO: ADD DUMMY DATA
+
 const App = () => {
   const classes = useStyles();
 
@@ -38,6 +41,7 @@ const App = () => {
         <Router>
           <Route exact path="/" component={SignIn} />
           <Route exact path="/feed" component={Feed} />
+          <Route exact path="/profile" component={Profile} />
         </Router>
       </Container>
     </ThemeProvider>
