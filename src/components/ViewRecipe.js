@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
+import { Divider } from '@material-ui/core';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 import { DialogContent, DialogContentText, Button } from '@material-ui/core';
@@ -11,7 +12,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function SimpleDialog({ handleClose, open }) {
+export default function SimpleDialog({
+  handleClose,
+  open,
+  title,
+  bio,
+  ingredients,
+  instructions,
+}) {
   const classes = useStyles();
 
   return (
@@ -19,24 +27,24 @@ export default function SimpleDialog({ handleClose, open }) {
       onClose={handleClose}
       aria-labelledby="simple-dialog-title"
       open={open}
+      fullWidth
     >
-      <DialogTitle id="simple-dialog-title">[Recipe name]</DialogTitle>
+      <DialogTitle id="simple-dialog-title">{title}</DialogTitle>
+      <Divider />
       <DialogContent>
-        <DialogContentText>
-          Here is where the OP's ingredients and instructions will go..
-        </DialogContentText>
+        <DialogContentText>{bio}</DialogContentText>
         <div>
-          <h2>INGREDIENTS:</h2>
+          <h3>INGREDIENTS:</h3>
           <ul>
-            <li>2 Mushrooms</li>
-            <li>3 Apples</li>
-            <li>6 Eggs</li>
+            {ingredients.map(ingredient => (
+              <li>{ingredient}</li>
+            ))}
           </ul>
-          <h2>INSTRUCTIONS:</h2>
+          <h3>INSTRUCTIONS:</h3>
           <ol>
-            <li>Heat pot</li>
-            <li>Fill pot with sauce</li>
-            <li>Let it sit for an hour</li>
+            {instructions.map(step => (
+              <li>{step}</li>
+            ))}
           </ol>
         </div>
       </DialogContent>

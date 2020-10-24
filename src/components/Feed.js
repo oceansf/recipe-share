@@ -5,6 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import TopAppBar from './TopAppBar';
 import Post from './Post';
+// THIS WILL BE REPLACED WITH ACTUAL DB
+import dummy from '../dummyData';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -19,13 +21,16 @@ const Feed = () => {
     <React.Fragment>
       <TopAppBar />
       <Container maxWidth="sm" className={classes.root}>
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
-        <Post />
+        {dummy.orders.map(recipe => (
+          <Post
+            title={recipe.title}
+            author={recipe.author}
+            likes={recipe.likes}
+            bio={recipe.bio}
+            ingredients={recipe.ingredients}
+            instructions={recipe.instructions}
+          />
+        ))}
       </Container>
     </React.Fragment>
   );

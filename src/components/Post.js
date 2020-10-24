@@ -9,8 +9,10 @@ import {
   Typography,
   Link,
   Paper,
+  IconButton,
 } from '@material-ui/core';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import ViewRecipePopup from './ViewRecipe';
 
@@ -38,11 +40,16 @@ const useStyles = makeStyles(theme => ({
   button: {
     margin: '0.5rem 0',
   },
+  likeBtn: {
+    padding: 0,
+    color: 'red',
+  },
 }));
 
-const Post = () => {
+const Post = ({ title, author, likes, ingredients, instructions, bio }) => {
   const classes = useStyles();
   const [popupOpen, setPopupOpen] = useState(false);
+  const [liked, setLiked] = useState(false);
 
   const handleOpen = () => {
     setPopupOpen(true);
@@ -52,13 +59,17 @@ const Post = () => {
     setPopupOpen(false);
   };
 
+  const handleLiked = () => {
+    setLiked(!liked);
+  };
+
   return (
-    <Paper className={classes.root} elevation={2}>
+    <Paper className={classes.root}>
       <Box display="flex" alignItems="center" className={classes.headerWrapper}>
         <Avatar className={classes.avatar}>OF</Avatar>
         <Box>
-          <h2 className={classes.headerText}>Best Stew in the World</h2>
-          <h3 className={classes.headerText}>ocean fuaga</h3>
+          <h2 className={classes.headerText}>{title}</h2>
+          <h3 className={classes.headerText}>{author}</h3>
         </Box>
       </Box>
       <img
@@ -68,8 +79,14 @@ const Post = () => {
       />
       <Box className={classes.contentWrapper}>
         <Box display="flex" alignItems="center">
-          <FavoriteBorderIcon style={{ margin: '0.5rem' }} />
-          <Typography className={classes.likes}>100 likes</Typography>
+          <IconButton className={classes.likeBtn} onClick={() => handleLiked()}>
+            {liked ? (
+              <FavoriteIcon style={{ margin: '0.5rem' }} />
+            ) : (
+              <FavoriteBorderIcon style={{ margin: '0.5rem' }} />
+            )}
+          </IconButton>
+          <Typography className={classes.likes}>{`${likes} likes`}</Typography>
         </Box>
         <Button
           variant="outlined"
@@ -79,7 +96,14 @@ const Post = () => {
         >
           Recipe Instructions
         </Button>
-        <ViewRecipePopup open={popupOpen} handleClose={handleClose} />
+        <ViewRecipePopup
+          open={popupOpen}
+          handleClose={handleClose}
+          title={title}
+          bio={bio}
+          ingredients={ingredients}
+          instructions={instructions}
+        />
         <Divider />
         <div style={{ margin: '0.5rem 0' }}>
           <list style={{ listStyle: 'none' }}>
